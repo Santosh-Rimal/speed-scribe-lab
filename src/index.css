@@ -1,40 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* TypeShala Design System - Advanced Typing Practice Platform */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background System */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --background-secondary: 240 3.7% 15.9%;
+    --background-tertiary: 240 5.9% 10%;
+    
+    /* Advanced Gradient System */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(213 93% 68%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(300 76% 75%) 0%, hsl(262 83% 58%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 93% 58%) 0%, hsl(38 92% 50%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(158 64% 52%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(0 72% 51%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(240 5.9% 10%) 0%, hsl(240 3.7% 15.9%) 100%);
+    
+    /* Typing Specific Colors */
+    --typing-correct: 142 76% 36%;
+    --typing-incorrect: 0 84% 60%;
+    --typing-current: 45 93% 58%;
+    --typing-pending: 240 5% 64.9%;
+    
+    /* Keyboard Colors */
+    --key-background: 240 5.9% 10%;
+    --key-border: 240 3.7% 15.9%;
+    --key-hover: 240 5% 20%;
+    --key-active: 262 83% 58%;
+    --finger-guide-1: 0 72% 51%;
+    --finger-guide-2: 25 95% 53%;
+    --finger-guide-3: 45 93% 58%;
+    --finger-guide-4: 142 76% 36%;
+    --finger-guide-5: 158 64% 52%;
+    --finger-guide-6: 200 98% 39%;
+    --finger-guide-7: 213 93% 68%;
+    --finger-guide-8: 262 83% 58%;
+    
+    /* Enhanced Shadow System */
+    --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
+    --shadow-glow-accent: 0 0 30px hsl(45 93% 58% / 0.4);
+    --shadow-elevation: 0 10px 30px -10px hsl(240 3.7% 15.9% / 0.8);
+    --shadow-keyboard: 0 8px 32px hsl(240 3.7% 15.9% / 0.6);
+    
+    /* Advanced Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-fast: all 0.15s ease-out;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Shadcn Integration with TypeShala Theme */
+    --card: 240 3.7% 15.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 5.9% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5.9% 10%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 93% 58%;
+    --accent-foreground: 240 10% 3.9%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262 83% 58%;
 
     --radius: 0.5rem;
 
@@ -100,6 +143,205 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-secondary));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
+
+@layer components {
+  /* Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .bg-gradient-success {
+    background: var(--gradient-success);
+  }
+  
+  .bg-gradient-danger {
+    background: var(--gradient-danger);
+  }
+  
+  .bg-gradient-surface {
+    background: var(--gradient-surface);
+  }
+  
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--shadow-glow-accent);
+  }
+  
+  .elevation {
+    box-shadow: var(--shadow-elevation);
+  }
+  
+  /* Typing States */
+  .typing-correct {
+    color: hsl(var(--typing-correct));
+    background-color: hsl(var(--typing-correct) / 0.1);
+  }
+  
+  .typing-incorrect {
+    color: hsl(var(--typing-incorrect));
+    background-color: hsl(var(--typing-incorrect) / 0.1);
+  }
+  
+  .typing-current {
+    color: hsl(var(--typing-current));
+    background-color: hsl(var(--typing-current) / 0.2);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  
+  .typing-pending {
+    color: hsl(var(--typing-pending));
+  }
+  
+  /* Keyboard Key Styles */
+  .keyboard-key {
+    background: hsl(var(--key-background));
+    border: 1px solid hsl(var(--key-border));
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-keyboard);
+  }
+  
+  .keyboard-key:hover {
+    background: hsl(var(--key-hover));
+    transform: translateY(-2px);
+  }
+  
+  .keyboard-key.active {
+    background: hsl(var(--key-active));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Finger Guide Colors */
+  .finger-1 { background: hsl(var(--finger-guide-1) / 0.2); border-color: hsl(var(--finger-guide-1)); }
+  .finger-2 { background: hsl(var(--finger-guide-2) / 0.2); border-color: hsl(var(--finger-guide-2)); }
+  .finger-3 { background: hsl(var(--finger-guide-3) / 0.2); border-color: hsl(var(--finger-guide-3)); }
+  .finger-4 { background: hsl(var(--finger-guide-4) / 0.2); border-color: hsl(var(--finger-guide-4)); }
+  .finger-5 { background: hsl(var(--finger-guide-5) / 0.2); border-color: hsl(var(--finger-guide-5)); }
+  .finger-6 { background: hsl(var(--finger-guide-6) / 0.2); border-color: hsl(var(--finger-guide-6)); }
+  .finger-7 { background: hsl(var(--finger-guide-7) / 0.2); border-color: hsl(var(--finger-guide-7)); }
+  .finger-8 { background: hsl(var(--finger-guide-8) / 0.2); border-color: hsl(var(--finger-guide-8)); }
+  
+  /* Animation Classes */
+  .animate-typing {
+    animation: typing 2s steps(20) infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Font Families */
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Transition Utilities */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+  to { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }
